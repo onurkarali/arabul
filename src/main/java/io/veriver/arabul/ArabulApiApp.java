@@ -9,5 +9,4 @@ public class ArabulApiApp {
 	public static void main(String[] args) {
 		SpringApplication.run(ArabulApiApp.class, args);
 	}
-
 }

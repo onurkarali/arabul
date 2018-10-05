@@ -41,6 +41,15 @@ public class CityService {
 				.collect(Collectors.toList());
 	}
 	
+	public List<String> getDistricts(final String cityName) {
+		return cities
+				.stream()
+				.filter(city -> city.getIl().toLowerCase().equals(cityName.toLowerCase()))
+				.findFirst()
+				.map(city -> city.getIlceleri())
+				.get();
+	}
+	
 	private String readResource(final String fileName) throws IOException {
         return Resources.toString(Resources.getResource(fileName), Charsets.UTF_8);
 	}
