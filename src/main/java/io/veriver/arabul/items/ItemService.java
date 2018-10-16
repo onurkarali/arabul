@@ -1,15 +1,18 @@
 package io.veriver.arabul.items;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ItemService {
-	private List<Item> items = new ArrayList<>();
+	
+	@Autowired
+	private ItemRepository repository;
+	
 	public void saveItem(final String type, final String description,
 		final String city, final String district, final String url) {	
 		Item newItem = Item.builder()
@@ -21,7 +24,7 @@ public class ItemService {
 				.url(url)
 				.build();
 				
-		items.add(newItem);
+		repository.save(newItem);
 	}
 	
 	public Item getItem(final String id) {

@@ -1,15 +1,27 @@
 package io.veriver.arabul.items;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
+@Document(collection="items")
 public class Item {
-	private final String id;
-	private final String type;
-	private final String description;
-	private final String city;
-	private final String district;
-	private final String url;
+	@Id
+	public final String id;
+	public final String type;
+	public final String description;
+	public final String city;
+	public final String district;
+	public final String url;
+	
+	@Override
+    public String toString() {
+        return String.format(
+                "Item [id=%s, city='%s', district='%s']",
+                id, city, district);
+    }
 }
