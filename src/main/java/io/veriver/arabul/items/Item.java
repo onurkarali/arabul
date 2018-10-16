@@ -11,7 +11,7 @@ import lombok.Getter;
 @Document(collection="items")
 public class Item {
 	@Id
-	public final String id;
+	public final String _id;
 	public final String type;
 	public final String description;
 	public final String city;
@@ -22,6 +22,6 @@ public class Item {
     public String toString() {
         return String.format(
                 "Item [id=%s, city='%s', district='%s']",
-                id, city, district);
+                _id, city, district);
     }
 }

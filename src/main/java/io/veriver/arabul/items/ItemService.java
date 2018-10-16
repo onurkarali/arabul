@@ -13,10 +13,23 @@ public class ItemService {
 	@Autowired
 	private ItemRepository repository;
 	
-	public void saveItem(final String type, final String description,
+	public void addItem(final String type, final String description,
 		final String city, final String district, final String url) {	
 		Item newItem = Item.builder()
-				.id(UUID.randomUUID().toString())
+				._id(UUID.randomUUID().toString())
+				.type(type)
+				.description(description)
+				.city(city)
+				.district(district)
+				.url(url)
+				.build();
+				
+		repository.save(newItem);
+	}
+
+	public void updateItem(String _id, String type, String description, String city, String district, String url) {
+		Item newItem = Item.builder()
+				._id(_id)
 				.type(type)
 				.description(description)
 				.city(city)
@@ -32,8 +45,7 @@ public class ItemService {
 		return item;
 	}
 	
-	public List<Item> searchItems(final String id) {
-		List<Item> itemList = Arrays.asList(Item.builder().build());
-		return itemList;
+	public List<Item> getItems(final String city, final String district) {
+		return repository.findByCityAndDistrict(city, district);
 	}
 }

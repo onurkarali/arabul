@@ -8,5 +8,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface ItemRepository extends MongoRepository<Item, String> {
 
     public Optional<Item> findById(String id);
-    public List<Item> findByCity(String city);
+    public List<Item> findByCityAndDistrict(String city, String district);
 }
